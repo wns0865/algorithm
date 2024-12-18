@@ -16,8 +16,8 @@ public class Main {
     static boolean isVisited[][];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        isVisited=new boolean[N][N];
         N = Integer.parseInt(br.readLine());
+        isVisited=new boolean[N][N];
         arr=new int[N][N];
         for(int i=0;i<N;i++){
             String s = br.readLine();
@@ -32,7 +32,7 @@ public class Main {
     static void start(int a, int b){
         Queue<pos> q= new ArrayDeque<>();
         q.add(new pos(a,b));
-        // isVisited[a][b]=true;
+         isVisited[a][b]=true;
         while(!q.isEmpty()){
             pos tmp = q.poll();
             int num=arr[tmp.x][tmp.y];
@@ -40,13 +40,14 @@ public class Main {
                 int tx=tmp.x+dx[d]*num;
                 int ty=tmp.y+dy[d]*num;
                 if(!check(tx,ty)) continue;
-                // if(isVisited[tx][ty])continue;
+                if(isVisited[tx][ty])continue;
                 if(tx==N-1&&ty==N-1) {
                     ans++;
                     break;
                     }
                 else{
                     q.add(new pos(tx,ty));
+                    isVisited[tx][ty]=true;
                 }
             }
         }
