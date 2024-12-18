@@ -6,12 +6,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         
+        // 소들의 특성 저장
         Map<String, Set<String>> map = new HashMap<>();
         for (int i = 0; i < N; i++) {
             String s = br.readLine();
             StringTokenizer st = new StringTokenizer(s);
             
-            String name = st.nextToken(); // 종류
+            String name = st.nextToken(); // 소의 이름
             int k = Integer.parseInt(st.nextToken()); // 특성의 개수
             Set<String> traits = new HashSet<>();
             for (int j = 0; j < k; j++) {
@@ -69,7 +70,7 @@ public class Main {
             int noCount = getMaxYes(noGroup, memo);
             
             // 현재 질문에 대한 Yes 횟수 계산
-            maxYes = Math.max(maxYes, 1 + yesCount);
+            maxYes = Math.max(maxYes, 1 + Math.max(yesCount, noCount));
         }
         
         // 결과 저장
